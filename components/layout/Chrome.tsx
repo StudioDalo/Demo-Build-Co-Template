@@ -13,7 +13,7 @@ export function AnnouncementBar({ a }: { a: SiteSettings["announcement"] }) {
     <div className="bg-accent text-ink" data-section="announcement">
       <p className="container-x py-2 text-center text-xs font-semibold sm:text-sm">
         {a.text}{" "}
-        {a.link && <Link href={a.link.href} className="underline underline-offset-2" data-track-location="banner">{a.link.label} →</Link>}
+        {a.link && <Link href={a.link.href} className="inline-block whitespace-nowrap underline underline-offset-2" data-track-location="banner">{a.link.label} →</Link>}
       </p>
     </div>
   );
