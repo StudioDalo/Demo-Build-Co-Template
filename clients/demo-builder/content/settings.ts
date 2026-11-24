@@ -161,7 +161,7 @@ export const homePage: HomePage = {
       { url: "/placeholders/hero-3.mp4", poster: { url: "/placeholders/hero-3-poster.webp", alt: "Placeholder hero video 3", width: 1080, height: 1350 }, placeholder: true, title: "Garden landscaping" },
     ],
     headline: "Loft Conversions, Extensions & Landscaping Across Exampleton, Built Right, Finished On Time.",
-    subheadline: "A demo of a builder's website: real-project videos, a 2-minute quote form, and every enquiry delivered straight to the owner's dashboard.",
+    subheadline: "See how a contractor website presents services and lets homeowners request a callback.",
     primaryCta: { label: "Get My Free Quote", href: "/get-a-quote" },
     secondaryCta: { label: "Watch Our Latest Builds", href: "#watch-us-build" },
     showQuickForm: true,

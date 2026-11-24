@@ -36,9 +36,8 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <a href="#main" className="sr-only z-[80] rounded-lg bg-accent px-4 py-3 font-bold text-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
         Skip to content
       </a>
-      <AnnouncementBar a={s.announcement} />
       {/* Only the fields the (browser) header needs, so nothing else is serialised into the page */}
-      <Header s={{ logo: s.logo, nav: s.nav, headerCta: s.headerCta, phones: s.phones, businessName: s.businessName }} />
+      <Header announcement={<AnnouncementBar a={s.announcement} />} s={{ logo: s.logo, nav: s.nav, headerCta: s.headerCta, phones: s.phones, businessName: s.businessName }} />
       <main id="main">{children}</main>
       <Footer s={s} areas={areas} services={services} cookieSettings={tracking.configured} />
       <MobileBar s={s} />

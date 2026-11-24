@@ -27,6 +27,8 @@ export function isLiveSite(): boolean {
  * To show a prospect the demo with its placeholders, use a Preview deployment.
  */
 export function hidePlaceholders(): boolean {
+  // The prospect preview uses the same content filtering as a client launch.
+  if ((process.env.VERCEL_GIT_COMMIT_REF || process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF) === "staging/demo-quote-ready") return true;
   // Any Vercel production deployment hides placeholders, even before the real domain is set (U6).
   // VERCEL_ENV on the server; NEXT_PUBLIC_VERCEL_ENV (set automatically by Vercel) in the browser.
   if ((process.env.VERCEL_ENV || process.env.NEXT_PUBLIC_VERCEL_ENV) === "production") return true;

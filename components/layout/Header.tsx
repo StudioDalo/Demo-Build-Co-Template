@@ -17,7 +17,7 @@ export function SiteLogo({ logo, className }: { logo: SiteSettings["logo"]; clas
   return <Logo className={className} />;
 }
 
-export function Header({ s }: { s: Pick<SiteSettings, "logo" | "nav" | "headerCta" | "phones" | "businessName"> }) {
+export function Header({ s, announcement }: { s: Pick<SiteSettings, "logo" | "nav" | "headerCta" | "phones" | "businessName">; announcement: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   useEffect(() => setOpen(false), [pathname]);
@@ -30,7 +30,8 @@ export function Header({ s }: { s: Pick<SiteSettings, "logo" | "nav" | "headerCt
   const primary = s.phones[0];
 
   return (
-    <header className="sticky top-0 z-50 bg-ink text-white" data-section="header">
+    <header className="sticky top-0 z-[60] bg-ink text-white" data-section="header">
+      {announcement}
       <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-20">
         <Link href="/" className="shrink-0" title={`${s.businessName} home`}>
           <SiteLogo logo={s.logo} className="w-[80px] lg:w-[112px]" />
@@ -65,14 +66,14 @@ export function Header({ s }: { s: Pick<SiteSettings, "logo" | "nav" | "headerCt
           </button>
         </div>
       </div>
-      <div id="mobile-menu" hidden={!open} className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-ink lg:hidden">
+      <div id="mobile-menu" hidden={!open} className="absolute inset-x-0 top-full max-h-[75dvh] overflow-y-auto border-t border-white/10 bg-ink lg:hidden">
         <nav aria-label="Mobile" className="container-x py-6">
           <ul className="space-y-1 text-2xl font-bold">
             {[...s.nav, { label: "How we work", href: "/how-we-work" }, { label: "FAQs", href: "/faqs" }, { label: "Contact", href: "/contact" }].map((l) => (
-              <li key={l.href}><Link href={l.href} className="block py-3">{l.label}</Link></li>
+              <li key={l.href}><Link href={l.href} className="block py-3" onClick={() => setOpen(false)}>{l.label}</Link></li>
             ))}
           </ul>
-          <Link href={s.headerCta.href} className="btn-primary mt-6 w-full" data-track="cta_click" data-track-location="header">{s.headerCta.label}</Link>
+          <Link href={s.headerCta.href} className="btn-primary mt-6 w-full" onClick={() => setOpen(false)} data-track="cta_click" data-track-location="header">{s.headerCta.label}</Link>
           <div className="mt-6 space-y-2">
             {s.phones.map((p) => (
               <a key={p.number} href={telHref(p.number)} className="flex items-center gap-3 text-lg font-bold"><Phone className="size-5 text-accent" aria-hidden /> {p.number}</a>

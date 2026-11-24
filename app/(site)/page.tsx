@@ -43,9 +43,11 @@ export default async function HomePage() {
               <Link href={h.hero.primaryCta.href} className="btn-primary text-lg" data-track-location="hero">
                 {h.hero.primaryCta.label} <ArrowRight className="size-5" aria-hidden />
               </Link>
-              <a href={h.hero.secondaryCta.href} className="btn-outline text-white">
-                <PlayCircle className="size-5" aria-hidden /> {h.hero.secondaryCta.label}
-              </a>
+              {(h.hero.secondaryCta.href !== "#watch-us-build" || tiktok.length > 0) && (
+                <a href={h.hero.secondaryCta.href} className="btn-outline text-white">
+                  <PlayCircle className="size-5" aria-hidden /> {h.hero.secondaryCta.label}
+                </a>
+              )}
             </div>
           </div>
           {videos.length > 0 && (
